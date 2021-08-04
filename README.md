@@ -1,4 +1,4 @@
-![Metagrapher Logotype](https://raw.githubusercontent.com/Baksalyar/Metagrapher/master/imgs/logo.png)
+![Metagrapher Logotype](https://github.com/Baksalyar/Metagrapher/blob/master/imgs/logo.png?raw=true)
 
 _Metagrapher — a convenient Python library for obtaining readable English language identifiers (eg, URLs), generated from the strings, written in different languages, using non-standard characters and UTF-8 symbols. Also, this technique is called **transliteration** or **romanization**._
 
@@ -12,7 +12,7 @@ pip3 install metagrapher
 
 ### Supported Languages
 
-![Metagrapher Supported Languages](https://raw.githubusercontent.com/Baksalyar/Metagrapher/master/imgs/langs_small.png)
+![Metagrapher Supported Languages](https://github.com/Baksalyar/Metagrapher/blob/master/imgs/langs_small.png?raw=true)
 
 At the moment Metagrapher supports the following language pairs (in alphabetic order):
 
@@ -49,7 +49,7 @@ At the moment Metagrapher supports the following language pairs (in alphabetic o
 
 ### Why Metagrapher?
 
-![Leela Reads Alien Manuscript](https://raw.githubusercontent.com/Baksalyar/Metagrapher/master/imgs/leela.jpg)
+![Leela Reads Alien Manuscript](https://github.com/Baksalyar/Metagrapher/blob/master/imgs/leela.jpg?raw=true)
 
 A primary target of this library is to create readable identifiers for any items, mostly — so called [semantic URLs](https://en.wikipedia.org/wiki/Semantic_URL), which is more readable to live users and to search engines.
 
@@ -141,7 +141,7 @@ Result: *Making ♥ good ♥ things ♥ as ♥ always*
 
 P.S. Useful resources, that you can borrow from Metagrapher:
 
-* [Chinese Pinyin Dictionary (Diactrical signs was removed!) — 26 653 ideographs](https://raw.githubusercontent.com/Baksalyar/Metagrapher/master/zh_dict.json)
-* [Chinese Frequency Dictionary — 24 204 words](https://raw.githubusercontent.com/Baksalyar/Metagrapher/master/zh_freq_words.dict)
-* [Japanese Frequency Dictionary — 25 574 words](https://raw.githubusercontent.com/Baksalyar/Metagrapher/master/jp_freq_words.dict)
-* [Japanese Kakasi Kanji Decomposition Dictionary — 110 508 words](https://raw.githubusercontent.com/Baksalyar/Metagrapher/master/jp_kakasi_decomposition.json)
+* [Chinese Pinyin Dictionary (Diactrical signs was removed!) — 26 653 ideographs](https://github.com/Baksalyar/Metagrapher/blob/master/zh_dict.json?raw=true)
+* [Chinese Frequency Dictionary — 24 204 words](https://github.com/Baksalyar/Metagrapher/blob/master/zh_freq_words.dict?raw=true)
+* [Japanese Frequency Dictionary — 25 574 words](https://github.com/Baksalyar/Metagrapher/blob/master/jp_freq_words.dict?raw=true)
+* [Japanese Kakasi Kanji Decomposition Dictionary — 110 508 words](https://github.com/Baksalyar/Metagrapher/blob/master/jp_kakasi_decomposition.json?raw=true)
