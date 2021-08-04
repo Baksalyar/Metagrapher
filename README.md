@@ -1,6 +1,6 @@
 ![Metagrapher Logotype](https://github.com/Baksalyar/Metagrapher/blob/master/imgs/logo.png?raw=true)
 
-_Metagrapher — a convenient Python library for obtaining readable English language identifiers (eg, URLs), generated from the strings, written in different languages, using non-standard characters and UTF-8 symbols. Also, this technique is called **transliteration** or **romanization**._
+_Metagrapher — convenient Python library for obtaining readable Universal Resource Identifiers (URIs) and other Latin script identifiers generated from strings written in different languages, using non-standard characters and UTF-8 symbols. Also, this technique is called **transliteration** or **romanization**._
 
 ### Installation
 
@@ -14,7 +14,7 @@ pip3 install metagrapher
 
 ![Metagrapher Supported Languages](https://github.com/Baksalyar/Metagrapher/blob/master/imgs/langs_small.png?raw=true)
 
-At the moment Metagrapher supports the following language pairs (in alphabetic order):
+At the moment, Metagrapher supports the following language pairs (in alphabetic order):
 
 * Arabic			→ English (*ar_en*) [draft]
 * Armenian		→ English (*hy_en*)
@@ -51,13 +51,13 @@ At the moment Metagrapher supports the following language pairs (in alphabetic o
 
 ![Leela Reads Alien Manuscript](https://github.com/Baksalyar/Metagrapher/blob/master/imgs/leela.jpg?raw=true)
 
-A primary target of this library is to create readable identifiers for any items, mostly — so called [semantic URLs](https://en.wikipedia.org/wiki/Semantic_URL), which is more readable to live users and to search engines.
+A primary intention of this library is to create readable identifiers for any items, mostly — so called [semantic URLs](https://en.wikipedia.org/wiki/Semantic_URL), which is more readable to live users, legacy software and to search engines.
 
-Library will assistly generate the readable identifier from the any string with «non-standard» (for English alphabet) characters, as well as from the string written in another language. I bet, if your primary (and only) language is English, following URL will be absolutely unreadable for you: `http://goodi.es/волшебство/الرغبات السرية/`, furthermore, this URL cannot be readen for some legacy software and hardware. Metagrapher will kindly convert above mentioned URL to user- and machine-readable: `http://goodi.es/volshebstvo/alrghbat-alsryh`.
+This library will help to generate a readable identifier from the any string with “non-standard” (for Latin alphabet) characters, as well as from strings written in another language. If your primary language is English, I bet that the following URL will be absolutely unreadable for you: `http://goodi.es/волшебство/الرغبات السرية/`. Furthermore, this URL cannot be read for some legacy software and hardware. Metagrapher will kindly convert the above mentioned URL to user- and machine-readable: `http://goodi.es/volshebstvo/alrghbat-alsryh`.
 
 ### Examples
 
-* Language-specific conversion (if you want to convert only from one language to English consciously):
+* Language-specific conversion (if you want to convert from specific language to English consciously):
 
 ```python
 import Metagrapher
@@ -66,27 +66,27 @@ print( Metagrapher('матрёшка водка бабушка балалайк�
 ```
 Will output: *matryoshka vodka babushka balalayka*
 
-* If you want to convert only additional UTF-characters like ♥ or ☣, for instance, you can use `symbols_en()` method:
+* If you want to convert only additional UTF-characters like ♥ or ☣, for instance, you can use the `symbols_en()` method:
 
 ```python
 Metagrapher('I ♥ NY and want a cup of ☕ right now!').symbols_en().lower().slugify('_')
 ```
 Will generate: *i_love_ny_and_want_a_cup_of_coffee_right_now*
 
-Oh, by the way, slugify() will remove any non-readable characters and provide you with ready-to-use string. As an argument, method `slugify()` will accept any string for delimiting words, `-` will be used by default.
+Oh, by the way, slugify() will remove any non-readable characters and provide you with a ready-to-use string. As an argument, method `slugify()` will accept any string for delimiting words, `-` (will be used by default).
 
-And, as you can possibly think, a `lower()` method will lower-case all upper-cased characters.
+And, as you might think, a `lower()` method will lower-case all upper-cased characters.
 
-One of the strong sides of Metagrapher is delicate case conversion. For instance, Metagrapher will keep right case for transliterated 'ШАПКА Юлии' by default: 'SHAPKA Yulii', other libraries will convert this string to 'ShAPKA Yulii' or even to 'SHAPKA YUlii', and 'ШАШКА ЧАПАЯ' to 'ShAShKA ChAPAYa'.
+One of the strong sides of Metagrapher is a delicate case conversion. For instance, Metagrapher will preserve the case for transliterated string: 'ШАПКА Юлии' by default will translate to 'SHAPKA Yulii', other libraries will convert this string to 'ShAPKA Yulii' or even to 'SHAPKA YUlii', and 'ШАШКА ЧАПАЯ' to 'ShAShKA ChAPAYa'.
 
-* If you intend to translate only currencies signs, like $ or €, or £, etc. to readable text, you can use `currencies_en()` method:
+* If you intend to translate only currency signs, like $ or €, or £, etc. to readable text, you can use `currencies_en()` method:
 
 ```python
 Metagrapher('new t-shirts for only € 3,60').currencies().slugify()
 ```
 Will generate: *New-t-shirts-for-only-EUR-360*
 
-* Finally, you can chain methods (and languages, accordingly) elegant and logical way:
+* Finally, you can chain methods (and languages, accordingly) in an elegant and logical way:
 
 ```python
 Metagrapher('Здравствуйте, ♥ Labą dieną! ∞ teşekkür 100 ₺ için')
@@ -94,13 +94,13 @@ Metagrapher('Здравствуйте, ♥ Labą dieną! ∞ teşekkür 100 ₺ 
 ```
 Will output: *ZDRAVSTVUYTE-LOVE-LABA-DIENA-INFINITY-TESHEKKUR-100-TRY-ICHIN*
 
-* To use *Chinese*, *Japanese* and/or *Korean* languages, please, instantiate the Metagrapher with an argument `take_from_cjk='c, j, k'`, where 'c' — Chinese, 'j' — Japanese, and 'k' — appropriately — Korean. This flag will allow you to load a relatively “heavy” dictionaries at the library startup (this procedure will add ~0.02 s. for Chinese, ~0.1 s. for Japanese, and ~0.05 s. for Korean, on the initialization stage). Also you have an option to load these languages any time later — just use `load_cjk()` method with the same keyword argument `take_from_cjk`, or as first positional argument:
+* To use *Chinese*, *Japanese* and/or *Korean* languages, please instantiate Metagrapher with an argument `take_from_cjk='c, j, k'`, where 'c' — Chinese, 'j' — Japanese, and 'k' is Korean. This flag will allow you to load relatively “heavy” dictionaries at the library startup (this procedure will add ~0.02 s. for Chinese, ~0.1 s. for Japanese, and ~0.05 s. for Korean on the initialization stage). Also you have an option to load these languages at any later time — just use `load_cjk()` with the same keyword argument `take_from_cjk`, or as the first positional argument:
 
 ```python
-# 'j' loads a Japanese dicts:
+# 'j' loads Japanese dicts:
 Metagrapher('ワウ', take_from_cjk='j').jp_en().get()
 
-# 'c' will load a Chinese dictionaries:
+# 'c' will load Chinese dictionaries:
 Metagrapher().load_cjk('c').zh_en('哇').get()
 
 # 'k,c' will hook up Chinese and Korean languages:
@@ -112,7 +112,7 @@ Metagrapher(take_from_cjk='j,k').jp_en('できます').load_cjk('c').zh_en('改�
 
 ```
 
-* Completely automatic language non-specific conversion available by methods with `any_` at the beginning of name. For example, transliteration of all characters from all languages to *English* can be done with magic method `any_en()`. Generally usable for programmatically slugifying of any headers or user names:
+* Completely automatic non-language-specific conversion available by methods with `any_` at the beginning of name. For example, transliteration of all characters from all languages to *English* can be done with the magic method `any_en()`. It is generally usable for programmatically slugifying any headers or user names:
 
 ```python
 transliteration = Metagrapher('嚜鮙گرอาพέρ', 'cjk').any_en()
@@ -131,7 +131,7 @@ Output without overriding: *My love is beating*
 
 With overriding: *My heart is beating*
 
-Or you can even make own set of substitutions from the ground up:
+Or you can even provide your custom set of substitutions:
 ```python
 print( Metagrapher('Making bad things again')
 	.custom({'bad': 'good', 'again': 'as always', ' ': ' ♥ '}) )

@@ -9,20 +9,23 @@ class Metagrapher(object):
 	pairs = pairs
 	aliases = lang_aliases
 
-	# Allows to override presetted dictionary language pairs with
+	# Allows to override preset dictionary language pairs with
 	# the user-defined pairs:
 	overrider = lambda self, a, b: {x: b[x] if x in b else a[x] for x in a}
 
-	# Sorts dictionary by key's symbolic length (lengthful's first!), to handle
-	# large patterns firstly (i.e. starting with a replacement of "SCH" and then
-	# safely replacing "CH"). Returns the sorted list of tuples:
+	# Sorts the dictionary by a key's symbolic
+	# length (lengthful's first!), to handle large
+	# patterns firstly (i.e. starting with a replacement
+	# of "SCH" and then safely replacing "CH").
+	# Returns the sorted list of tuples:
 	sort_by_keylen = lambda self, d: sorted(d.items(), key=lambda t: -len(t[0]))
 
 	__version__ = '16.3.9'
 
 	def __init__(self, string='', take_from_cjk=''):
 
-		# If cjk (Chinese-Japan-Korean) flag is enabled, loading “Heavy” Dictionaries:
+		# If cjk (Chinese-Japan-Korean) flag is enabled,
+		# loading “Heavy” Dictionaries:
 		if ('c' in take_from_cjk) | ('j' in take_from_cjk) | ('k' in take_from_cjk):
 			with Timer():
 				self.load_cjk(take_from_cjk)
@@ -54,11 +57,13 @@ class Metagrapher(object):
 
 	def translate(self, string, langpairs, override={}):
 		langpairs = self.overrider(langpairs, override)
-		# Preliminary replacing the combinations containing more than one character:
+		# Preliminary replacing the combinations
+		# containing more than one character:
 		string = self.replace_patterns(string, langpairs)
 		new = []
 
-		# Handling characters from the language compliance matrix, the length of which doesn't exceed 1:
+		# Handling characters from the language compliance matrix,
+		# the length of which doesn't exceed 1:
 		for i, char in enumerate(string):
 			is_upper = char.isupper()
 			next_char = string[i+1] if i < len(string)-1 else ''
@@ -84,9 +89,11 @@ class Metagrapher(object):
 		return string
 
 	def sieve(self, string=None, langpairs=(), override={}):
-		# Sieving a bunch of language substitution pairs through the "self.translate" method:
+		# Sieving a bunch of language substitution pairs
+		# through the "self.translate" method:
 		for langpair in langpairs:
-			# If the langpair is from the CJK group, handling additional formalities, like
+			# If the langpair is from the CJK group,
+			# handling additional formalities, like
 			# the words separation by the frequency dictionaries
 			if ('zh_' in langpair) | ('jp_' in langpair) | ('kr_' in langpair):
 				string = self.cjk_processing(string, langpair)
@@ -208,8 +215,9 @@ class Metagrapher(object):
 	set_string = get
 
 	def slugify(self, separator='-', allow_symbols="-'_~"):
-		# You can manually add allowed (and potentially unsafe for a URI) symbols,
-		# for example, by calling method allow_symbols="$@:;?=+-&!*'_.,~"
+		# You can manually add allowed (and potentially
+		# unsafe for a URI) symbols, for example,
+		# by calling the allow_symbols="$@:;?=+-&!*'_.,~"
 		buffer = self.string.strip()
 		allowed_chars = re.compile(r'[^A-Za-z0-9\s{}{}]'.format(separator, allow_symbols))
 		doubled_separators = re.compile(separator + r'{2,}')
